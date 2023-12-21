@@ -97,4 +97,6 @@ Nice to haves
     - Links to local stores and libraries that sell or lend a book the user 
         is interested in
     - Login page
+
+![desktop page mockup](https://github.com/krisplakcoder/brainstation-capstone-clear-readings/blob/main/Clear%20Readings%20Desktop.jpg)
     
