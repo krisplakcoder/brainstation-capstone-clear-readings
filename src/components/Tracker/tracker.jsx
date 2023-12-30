@@ -32,8 +32,8 @@ export default function Tracker() {
                     </div>
                     
                     <div className="tracker-buttons">
-                        <button className="tracker-buttons--minus" onClick={reduceChapterCount}>-</button>
-                        <button className="tracker-buttons--add" onClick={increaseChapterCount}>+</button>
+                        <button className="tracker-button tracker-buttons--minus" onClick={reduceChapterCount}>-</button>
+                        <button className="tracker-button tracker-buttons--add" onClick={increaseChapterCount}>+</button>
                     </div>             
                 </div>
                 <div className="tracker-details tracker-details--tablet-desktop">
