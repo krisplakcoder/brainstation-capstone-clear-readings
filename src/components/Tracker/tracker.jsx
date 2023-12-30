@@ -6,6 +6,7 @@ import "./tracker.scss"
 export default function Tracker() {
 
     const [currentChapter, setCurrentChapter] = useState(1);
+    const [modalState, setModalState] = useState(false);
 
     function reduceChapterCount() {
         if (currentChapter > 1) {
@@ -25,7 +26,8 @@ export default function Tracker() {
             <section className="tracker">
                 <div className="tracker-book">
                     <h1 className="tracker-book-title">{bookdata.title}</h1>
-                    <img src={bookdata.image} alt="current book cover" className="tracker-image" />
+                    <img src={bookdata.image} alt="current book cover" className="tracker-image tracker-image--mobile" onClick={() => setModalState(true)}/>
+                    <img src={bookdata.image} alt="current book cover" className="tracker-image tracker-image--tablet-desktop" />
                     <div className="tracker-bar">
                         <label htmlFor="tracker-bar" className="tracker-chapter">Chapter: {currentChapter}/{bookdata.chapters}</label>
                         <progress id="tracker-bar" className="tracker-bar-progress" value = {currentChapter} max={bookdata.chapters} />
@@ -48,7 +50,7 @@ export default function Tracker() {
                     </ul>
                 </div>
             </section>
-            <Modal props={bookdata} />
+            { modalState ? <Modal props={bookdata} toggleModal={setModalState} /> : null }
         </>
     )
 }
