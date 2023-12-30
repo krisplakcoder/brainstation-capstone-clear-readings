@@ -23,6 +23,9 @@ export default function Tracker() {
         <>
             <p>The book title is: {bookdata.title}</p>
             <img src={bookdata.image} alt="current book cover" className="tracker-image" />
+            <div className="progress-bar">
+                <progress value = {currentChapter} max={bookdata.chapters} />
+            </div>
             <div className="buttons">
                 <button className="minus" onClick={reduceChapterCount}>-</button>
                 <button className="add" onClick={increaseChapterCount}>+</button>
