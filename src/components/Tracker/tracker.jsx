@@ -39,14 +39,14 @@ export default function Tracker() {
                     </div>             
                 </div>
                 <div className="tracker-details tracker-details--tablet-desktop">
-                    <h2 className="tracker-details-description-title">Description</h2>
+                    <h3 className="tracker-details-description-title">Description</h3>
                     <p className="tracker-details__description">
                         {bookdata.description}
                     </p>
                     <ul className="tracker-details__list-container">
-                        <li className="tracker-details__list-item"><span className="tracker-details__list-item--title">Author: {bookdata.author}</span></li>
-                        <li className="tracker-details__list-item"><span className="tracker-details__list-item--title">Published Date: {bookdata.publishedDate}</span></li>
-                        <li className="tracker-details__list-item"><span className="tracker-details__list-item--title">ISBN: {bookdata.isbn}</span></li>
+                        <li className="tracker-details__list-item"><span className="tracker-details__list-item--title">Author:</span> {bookdata.author}</li>
+                        <li className="tracker-details__list-item"><span className="tracker-details__list-item--title">Published Date:</span> {bookdata.publishedDate}</li>
+                        <li className="tracker-details__list-item"><span className="tracker-details__list-item--title">ISBN:</span> {bookdata.isbn}</li>
                     </ul>
                 </div>
             </section>
