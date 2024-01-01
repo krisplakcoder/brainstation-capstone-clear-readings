@@ -2,6 +2,7 @@ import Header from "../../components/Header/header";
 import Tracker from "../../components/Tracker/tracker";
 import ReadingList from "../../components/Reading-List/readingList";
 import "./homepage.scss";
+import Recommendations from "../../components/Recommendations/recommendations";
 
 export default function HomePage() {
     return (
@@ -13,6 +14,7 @@ export default function HomePage() {
                     <ReadingList />
                 </div>
             </div>
+            <Recommendations />
             <h1>I am a HomePage</h1>
         </>
     )
