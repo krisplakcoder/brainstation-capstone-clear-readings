@@ -11,10 +11,11 @@ export default function HomePage() {
             <div className="tracking-books__container">
                 <div className="tracking-books">
                     <Tracker />
-                    <ReadingList />
+                    <div className="tracking-books--tablet-desktop"><ReadingList /></div>
                 </div>
             </div>
             <Recommendations />
+            <div className="tracking-books--mobile"><ReadingList /></div>
             <h1>I am a HomePage</h1>
         </>
     )
