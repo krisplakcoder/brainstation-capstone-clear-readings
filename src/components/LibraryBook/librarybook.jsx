@@ -3,6 +3,7 @@ import "./librarybook.scss"
 import bookdata from "../../assets/data/bookdata.json"
 import LibraryModal from "./libraryBookModal";
 import AddBookModal from "./addBookModal";
+import RemoveBookModal from "./removeBookModal";
 
 
 export default function LibraryBook() {
@@ -11,6 +12,7 @@ export default function LibraryBook() {
     const [favoriteMode, setFavoriteMode] = useState("favorite-mode-off");
     const [favButtonName, setFavoriteButton ] = useState("Add to Favorites");
     const [addBookModalState, setAddModalState] = useState(false);
+    const [removeBookState, setRemoveModalState] = useState(false);
 
     function addFavorites() {
         if (favoriteMode === "favorite-mode-on") {
@@ -54,7 +56,7 @@ export default function LibraryBook() {
                             <div className="library__buttons-container library__book-section-tablet-desktop">
                                 <button className="library__buttons library__buttons-reading-list">Add to Reading List</button>
                                 <button className="library__buttons library__buttons-favorite" onClick={addFavorites}>{favButtonName}</button>
-                                <button className="library__buttons library__buttons-remove">Remove From Library</button>
+                                <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
                             </div>
                         </div>
                     </li>
@@ -62,6 +64,8 @@ export default function LibraryBook() {
             </section>
             { modalState ? <LibraryModal props={bookdata} toggleModal={setModalState} /> : null}
             {addBookModalState ? <AddBookModal props={bookdata} toggleModal={setAddModalState} /> : null}
+            {removeBookState ? <RemoveBookModal toggleModal={setRemoveModalState} /> : null}
+
         </>
     )
 }
