@@ -11,6 +11,7 @@ export default function Recommendations() {
     return (
         <>
             <section className="recommendations-section">
+                <h2>My Recommendations</h2>
                 <ul className="recommendations__card-container">
                     <li className="recommendations__card">
                         <div className="recommendations__buttons--close">

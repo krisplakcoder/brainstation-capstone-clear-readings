@@ -15,8 +15,8 @@ export default function LibraryModal({toggleModal, props}) {
                     </p>
                 </div>
                 <ul className="modal__details">
-                    <li className="modal__details-list-item">{props.chapters}</li>
-                    <li className="modal__details-list-item">{props.genre}</li>
+                    <li className="modal__details-list-item">{props.pageCount}</li>
+                    {/* <li className="modal__details-list-item">{props.genre}</li> */}
                 </ul>
                 <div className="modal__buttons-container">
                     <button className="modal__buttons-reading-list">Add to Reading List</button>

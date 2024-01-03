@@ -8,6 +8,7 @@ export default function ReadingList() {
     return (
         <>
             <section className="reading-list-container">
+                <h2>My Reading List</h2>
                 <ul className="reading-list">
                     <li className="reading-book">
                         <div className="reading-book__image-div">
