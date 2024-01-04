@@ -51,7 +51,7 @@ export default function LibraryBook() {
                 {bookList && bookList.map((bookdata) => {
                 return (
                     <>
-                    <li key={bookdata.id} className="library__card-container">
+                    <li key={bookdata.isbn} className="library__card-container">
                         <div  className={`library__card library__card--${favoriteMode}`}> 
                             <div className="library__book">
                                 <div className="library__book-cover">
