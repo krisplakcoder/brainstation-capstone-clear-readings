@@ -1,5 +1,21 @@
-
+import { useState
+ } from "react";
 export default function LibraryModal({toggleModal, props}) {
+
+    const [favoriteMode, setFavoriteMode] = useState("favorite-mode-off");
+    const [favButtonName, setFavoriteButton ] = useState("Add to Favorites");
+
+    function addFavorites() {
+        if (favoriteMode === "favorite-mode-on") {
+            setFavoriteMode("favorite-mode-off");
+            setFavoriteButton("Add to Favorites")
+        } else {
+            setFavoriteMode("favorite-mode-on");
+            setFavoriteButton("Remove from Favorites")
+
+        }
+        return favButtonName;
+    }
 
 
     return (
@@ -18,9 +34,10 @@ export default function LibraryModal({toggleModal, props}) {
                     <li className="modal__details-list-item">{props.pageCount}</li>
                     {/* <li className="modal__details-list-item">{props.genre}</li> */}
                 </ul>
-                <div className="modal__buttons-container">
-                    <button className="modal__buttons-reading-list">Add to Reading List</button>
-                    <button className="modal__buttons-remove">Remove From Library</button>
+                <div className="library__buttons-container--mobile">
+                    <button className="library__buttons library__buttons-reading-list">Add to Reading List</button>
+                    <button className="library__buttons library__buttons-favorite" onClick={addFavorites}>{favButtonName}</button>
+                    <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
                 </div>
             </div>
         </>

@@ -15,6 +15,7 @@ export default function LibraryBook() {
     const [addBookModalState, setAddModalState] = useState(false);
     const [removeBookState, setRemoveModalState] = useState(false);
     const [bookList, setBookList] = useState();
+    const [bookModalData, setBookModalData] = useState(); 
 
     useEffect(() => {
         const getBooks = async () => {
@@ -46,13 +47,16 @@ export default function LibraryBook() {
                 <div className="button__container">
                     <button className="addBook" onClick={() => setAddModalState(true)}>Add a Book</button>
                 </div>
+                <ul>
                 {bookList && bookList.map((bookdata) => {
                 return (
-                    <ul key={bookdata.id} className="library__card-container">
-                        <li className={`library__card library__card--${favoriteMode}`}>
+                    <>
+                    <li key={bookdata.id} className="library__card-container">
+                        <div  className={`library__card library__card--${favoriteMode}`}> 
                             <div className="library__book">
                                 <div className="library__book-cover">
-                                    <img src={bookdata.cover} alt="book cover" className="library__book-cover-image" onClick={() => setModalState(true)}/>
+                                    <img src={bookdata.cover} alt="book cover" className="library__book-cover-image library__book-cover-image--mobile" onClick={() => {setModalState(true); setBookModalData(bookdata)}}/>
+                                    <img src={bookdata.cover} alt="book cover" className="library__book-cover-image library__book-cover-image--tablet-desktop"/>
                                 </div>
                                 <div className="library__book-details">
                                     <div className="library__book-details-title">
@@ -68,16 +72,17 @@ export default function LibraryBook() {
                                 <div className="library__book-description library__book-section-tablet-desktop">
                                     <p className="library__book-description--overflow">{bookdata.description}</p>
                                 </div>
-                                <div className="library__buttons-container library__book-section-tablet-desktop">
+                                <div className="library__buttons-container library__buttons--tablet-desktop library__book-section-tablet-desktop">
                                     <button className="library__buttons library__buttons-reading-list">Add to Reading List</button>
                                     <button className="library__buttons library__buttons-favorite" onClick={addFavorites}>{favButtonName}</button>
                                     <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
                                 </div>
                             </div>
-                        </li>
-                    </ul>)}) }
+                        </div>
+                    </li></>)}) }
+                </ul>
             </section>
-            { modalState ? <LibraryModal props={bookdata} toggleModal={setModalState} /> : null}
+            {modalState && <LibraryModal props={bookModalData} toggleModal={setModalState}/>}
             {addBookModalState ? <AddBookModal toggleModal={setAddModalState} /> : null}
             {removeBookState ? <RemoveBookModal toggleModal={setRemoveModalState} /> : null}
 
