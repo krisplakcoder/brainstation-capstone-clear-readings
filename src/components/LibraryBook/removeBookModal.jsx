@@ -1,7 +1,20 @@
+import axios from "axios";
 import "./removeBookModal.scss"
 
-export default function RemoveBookModal({toggleModal}) {
+const URL = "http://localhost:8080";
 
+export default function RemoveBookModal({bookID, toggleModal}) {
+
+    console.log(bookID);
+
+    async function deleteBook(event) {
+        event.preventDefault();
+        try {
+            await axios.delete(`${URL}/library/${bookID}`).then(response => console.log(response.data));
+            alert("The book has been deleted");
+        } catch(error) {console.error(error)};
+        await window.location.reload();      
+    }
 
     return (
         <>
@@ -12,8 +25,8 @@ export default function RemoveBookModal({toggleModal}) {
                     </div>
                     <h3>ARE YOU SURE?</h3>
                     <div className="remove-modal__buttons-container">
-                        <button className="modal__buttons-cancel">No</button>
-                        <button className="modal__buttons-add">Yes</button>
+                        <button className="modal__buttons-cancel" onClick={() => toggleModal(false)}>No</button>
+                        <button className="modal__buttons-add" onClick={deleteBook}>Yes</button>
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ export default function LibraryBook() {
             try {
                 const response = await axios.get(URL + "/library");
                 setBookList(response.data);
-                console.log(response.data);
+                
             } catch(error) {console.log(error)};
         }
         getBooks();
@@ -51,7 +51,7 @@ export default function LibraryBook() {
                 {bookList && bookList.map((bookdata) => {
                 return (
                     <>
-                    <li key={bookdata.isbn} className="library__card-container">
+                    <li key={bookdata.id} className="library__card-container">
                         <div  className={`library__card library__card--${favoriteMode}`}> 
                             <div className="library__book">
                                 <div className="library__book-cover">
@@ -79,13 +79,12 @@ export default function LibraryBook() {
                                 </div>
                             </div>
                         </div>
+                        {modalState && <LibraryModal key={bookdata.id} props={bookModalData} toggleModal={setModalState}/>}
+                        {removeBookState ? <RemoveBookModal bookID={bookdata.id} toggleModal={setRemoveModalState} /> : null}
                     </li></>)}) }
                 </ul>
             </section>
-            {modalState && <LibraryModal props={bookModalData} toggleModal={setModalState}/>}
             {addBookModalState ? <AddBookModal toggleModal={setAddModalState} /> : null}
-            {removeBookState ? <RemoveBookModal toggleModal={setRemoveModalState} /> : null}
-
         </>
     )
 }

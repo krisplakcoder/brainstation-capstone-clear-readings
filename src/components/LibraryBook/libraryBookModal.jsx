@@ -1,9 +1,11 @@
-import { useState
- } from "react";
+import { useState } from "react";
+import RemoveBookModal from "./removeBookModal";
+
 export default function LibraryModal({toggleModal, props}) {
 
     const [favoriteMode, setFavoriteMode] = useState("favorite-mode-off");
     const [favButtonName, setFavoriteButton ] = useState("Add to Favorites");
+    const [removeBookState, setRemoveModalState] = useState(false);
 
     function addFavorites() {
         if (favoriteMode === "favorite-mode-on") {
@@ -39,6 +41,7 @@ export default function LibraryModal({toggleModal, props}) {
                     <button className="library__buttons library__buttons-favorite" onClick={addFavorites}>{favButtonName}</button>
                     <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
                 </div>
+                {removeBookState ? <RemoveBookModal bookID={props.id} toggleModal={setRemoveModalState} /> : null}
             </div>
         </>
     )
