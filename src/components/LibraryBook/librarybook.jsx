@@ -4,14 +4,14 @@ import "./librarybook.scss"
 import LibraryModal from "./libraryBookModal";
 import AddBookModal from "./addBookModal";
 import RemoveBookModal from "./removeBookModal";
+import FavButton from "./favButton";
 const URL = "http://localhost:8080";
 
+ 
 
 export default function LibraryBook() {
 
     const [modalState, setModalState] = useState(false);
-    const [favoriteMode, setFavoriteMode] = useState("favorite-mode-off");
-    const [favButtonName, setFavoriteButton ] = useState("Add to Favorites");
     const [addBookModalState, setAddModalState] = useState(false);
     const [removeBookState, setRemoveModalState] = useState(false);
     const [bookList, setBookList] = useState();
@@ -23,22 +23,15 @@ export default function LibraryBook() {
                 const response = await axios.get(URL + "/library");
                 setBookList(response.data);
                 
-            } catch(error) {console.log(error)};
+            } catch(error) {console.log(error);};
         }
         getBooks();
     }, []);
 
-    function addFavorites() {
-        if (favoriteMode === "favorite-mode-on") {
-            setFavoriteMode("favorite-mode-off");
-            setFavoriteButton("Add to Favorites")
-        } else {
-            setFavoriteMode("favorite-mode-on");
-            setFavoriteButton("Remove from Favorites")
 
-        }
-        return favButtonName;
-    }
+       
+
+    // onClick={() => addFavorites(bookdata.id)}
 
     return (
 
@@ -50,9 +43,9 @@ export default function LibraryBook() {
                 <ul>
                 {bookList && bookList.map((bookdata) => {
                 return (
-                    <>
+                    
                     <li key={bookdata.id} className="library__card-container">
-                        <div  className={`library__card library__card--${favoriteMode}`}> 
+                        <div  className={`library__card`}> 
                             <div className="library__book">
                                 <div className="library__book-cover">
                                     <img src={bookdata.cover} alt="book cover" className="library__book-cover-image library__book-cover-image--mobile" onClick={() => {setModalState(true); setBookModalData(bookdata)}}/>
@@ -74,14 +67,15 @@ export default function LibraryBook() {
                                 </div>
                                 <div className="library__buttons-container library__buttons--tablet-desktop library__book-section-tablet-desktop">
                                     <button className="library__buttons library__buttons-reading-list">Add to Reading List</button>
-                                    <button className="library__buttons library__buttons-favorite" onClick={addFavorites}>{favButtonName}</button>
+                                    <FavButton id={bookdata.id} />
+                                    {/* <button className="library__buttons library__buttons-favorite" onClick={() => addFavorites(bookdata.id)}>{favButtonName}</button> */}
                                     <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
                                 </div>
                             </div>
                         </div>
                         {modalState && <LibraryModal key={bookdata.id} props={bookModalData} toggleModal={setModalState}/>}
                         {removeBookState ? <RemoveBookModal bookID={bookdata.id} toggleModal={setRemoveModalState} /> : null}
-                    </li></>)}) }
+                    </li>)}) }
                 </ul>
             </section>
             {addBookModalState ? <AddBookModal toggleModal={setAddModalState} /> : null}
