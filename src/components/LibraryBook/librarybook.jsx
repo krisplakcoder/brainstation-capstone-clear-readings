@@ -5,6 +5,7 @@ import LibraryModal from "./libraryBookModal";
 import AddBookModal from "./addBookModal";
 import RemoveBookModal from "./removeBookModal";
 import FavButton from "./favButton";
+import ReadListButton from "./readingListButton";
 const URL = "http://localhost:8080";
 
  
@@ -66,7 +67,8 @@ export default function LibraryBook() {
                                     <p className="library__book-description--overflow">{bookdata.description}</p>
                                 </div>
                                 <div className="library__buttons-container library__buttons--tablet-desktop library__book-section-tablet-desktop">
-                                    <button className="library__buttons library__buttons-reading-list">Add to Reading List</button>
+                                    {/* <button className="library__buttons library__buttons-reading-list">Add to Reading List</button> */}
+                                    <ReadListButton id={bookdata.id} isbn={bookdata.isbn} />
                                     <FavButton id={bookdata.id} />
                                     {/* <button className="library__buttons library__buttons-favorite" onClick={() => addFavorites(bookdata.id)}>{favButtonName}</button> */}
                                     <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>

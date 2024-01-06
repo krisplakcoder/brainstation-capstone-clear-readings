@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RemoveBookModal from "./removeBookModal";
 import FavButton from "./favButton";
+import ReadListButton from "./readingListButton";
 
 export default function LibraryModal({toggleModal, props}) {
 
@@ -38,9 +39,8 @@ export default function LibraryModal({toggleModal, props}) {
                     {/* <li className="modal__details-list-item">{props.genre}</li> */}
                 </ul>
                 <div className="library__buttons-container--mobile">
-                    <button className="library__buttons library__buttons-reading-list">Add to Reading List</button>
+                    <ReadListButton id={props.id} isbn={props.isbn} />
                     <FavButton id={props.id} />
-                    {/* <button className="library__buttons library__buttons-favorite" onClick={addFavorites}>{favButtonName}</button> */}
                     <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
                 </div>
                 {removeBookState ? <RemoveBookModal bookID={props.id} toggleModal={setRemoveModalState} /> : null}
