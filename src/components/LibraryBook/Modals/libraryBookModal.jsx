@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RemoveBookModal from "./removeBookModal";
-import FavButton from "./favButton";
-import ReadListButton from "./readingListButton";
+import FavButton from "../Buttons/favButton";
+import ReadListButton from "../Buttons/readingListButton";
 
 export default function LibraryModal({toggleModal, props}) {
 

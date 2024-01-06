@@ -41,19 +41,23 @@ export default function AddBookModal({toggleModal}) {
         <>
             <div className="addBookmodal">
                 <div className="modal-card">
-                    <div className="modal-close-button">
-                        <button className="modal-close" onClick={() => toggleModal(false)}>X</button>
+                    <div className="modal-close">
+                        <button className="modal-close__button" onClick={() => toggleModal(false)}>X</button>
                     </div>
-                    <h3>Add a Book!</h3>
-                    <form action="" className="addBook">
-                        <div className="addBook-title">
+                    <h3 className="modal-card__title">Add a Book!</h3>
+                    <form action="" className="addBook__form">
+                        <div className="addBook__form-input addBook__form-input-title">
+                            <label htmlFor="title" className="addBook__form-title-name">Title:</label>
                             <input type="text" name="title" placeholder="Enter Book Name" />
                         </div>
-                        <input value={values.isbn} type="text" name="isbn" placeholder="Enter ISBN number" onChange={uploadFormChange}/>
+                        <div className="addBook__form-input addBook__form-input-isbn">
+                            <label htmlFor="isbn" className="addBook__form-title-isbn">ISBN:</label>
+                            <input value={values.isbn} type="text" name="isbn" placeholder="Enter ISBN number" onChange={uploadFormChange}/>
+                        </div>
                     </form>
                     <div className="modal__buttons-container">
-                        <button className="modal__buttons-cancel" onClick={submitCancel}>Cancel</button>
-                        <button type="submit" className="modal__buttons-add" onClick={submitBook}>Add to Library</button>
+                        <button className="modal__buttons modal__buttons-cancel" onClick={submitCancel}>Cancel</button>
+                        <button type="submit" className="modal__buttons modal__buttons-add" onClick={submitBook}>Add to Library</button>
                     </div>
                 </div>
             </div>

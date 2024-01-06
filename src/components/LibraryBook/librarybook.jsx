@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./librarybook.scss"
-import LibraryModal from "./libraryBookModal";
-import AddBookModal from "./addBookModal";
-import RemoveBookModal from "./removeBookModal";
-import FavButton from "./favButton";
-import ReadListButton from "./readingListButton";
+import LibraryModal from "./Modals/libraryBookModal";
+import AddBookModal from "./Modals/addBookModal";
+import RemoveBookModal from "./Modals/removeBookModal";
+import FavButton from "./Buttons/favButton";
+import ReadListButton from "./Buttons/readingListButton";
 const URL = "http://localhost:8080";
 
  
