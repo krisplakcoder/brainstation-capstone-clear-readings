@@ -8,7 +8,7 @@ export default function ReadingList() {
     return (
         <>
             <section className="reading-list-container">
-                <h2>My Reading List</h2>
+                <h2 className="reading-list__title">My Reading List</h2>
                 <ul className="reading-list">
                     <li className="reading-book">
                         <div className="reading-book__image-div">
@@ -18,7 +18,10 @@ export default function ReadingList() {
                             <p className="reading-book__details-title">{bookdata.title}</p>
                             <p className="reading-book__details-author">By {bookdata.author}</p>
                             {/* change chapters to pages!!! <progress id="tracker-bar" className="tracker-bar-progress" value = {currentChapter} max={bookdata.chapters} /> */}
-                            <div>Progress: 15/{bookdata.chapters}</div>
+                            <div className="reading-book__progress-container">
+                                <label htmlFor="progress-bar" className="reading-book__progress-label">Progress: {currentChapter}/{bookdata.chapters}</label>
+                                <progress id="progress-bar" className="reading-book__progress-bar" value={currentChapter} max={bookdata.chapters} />
+                            </div>
                         </div>
                         <div className="reading-book__description reading-book__description--tablet-desktop">
                             {bookdata.description}
