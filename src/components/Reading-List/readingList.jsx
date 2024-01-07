@@ -1,7 +1,7 @@
 // import bookdata from "../../assets/data/bookdata.json";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./readingList.scss"
 const URL = "http://localhost:8080";
 
@@ -11,24 +11,30 @@ export default function ReadingList() {
     const [readingList, setReadingList] = useState();
     const {pageID} = useParams();
 
+    console.log("readinglist params: ", pageID);
+
     useEffect(() => {
         const getReadingList = async () => {
             try {
                 const response = await axios.get(URL + "/readinglist");
-                setReadingList(response.data);
+                if (pageID == undefined) {  
+                    setReadingList(response.data.splice(1));
+                }   else {
+                    setReadingList(response.data.filter((book) => {return book.id != pageID;}));
+                }
             } catch(error) {console.error(error)}
         }; getReadingList();
     }, [pageID])
 
-    let currentChapter = 12;
+    console.log("reading list: ", readingList);
+
     return (
-        <>
             <section className="reading-list-container">
                 <h2 className="reading-list__title">My Reading List</h2>
                 <ul className="reading-list">
                     {readingList && readingList.map((bookdata) => {
                         return (
-                            <li key={bookdata.id} className="reading-book">
+                            <Link to={"/"+bookdata.id} key={bookdata.id} className="reading-list__link--style"><li className="reading-book">
                                 <div className="reading-book__image-div">
                                     <img src={bookdata.cover} className="reading-book-image" alt="book cover" />
                                 </div>
@@ -41,11 +47,10 @@ export default function ReadingList() {
                                         <progress id="progress-bar" className="reading-book__progress-bar" value={bookdata.currentPage} max={bookdata.pageCount} />
                                     </div>
                                 </div>
-                            </li>
+                            </li></Link>
                         )})}
                 </ul>
             </section>
-        </>
     )
 }
 

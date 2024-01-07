@@ -13,19 +13,20 @@ export default function Tracker() {
     const [modalState, setModalState] = useState(false);
     const [bookdata, setBookData] = useState();
 
-    const {param} = useParams();
-    console.log("param is: ", param);
+    const {pageID} = useParams();
+    console.log("param is: ", pageID);
 
     useEffect(() => {
         const getBookData = async () => {
             try {
-                const response = await axios.get(URL + "/readinglist/" + param);
-                setBookData(response.data);
-                
+                const response = await axios.get(URL + "/readinglist/" + pageID);
+                setBookData(response.data);        
+                console.log("response: ",response.data);
             } catch(error) {console.error(error)}
         }; getBookData();
-    }, [param]);
+    }, [pageID]);
 
+    console.log("bookdata: ", bookdata);
 
     return (
         <>{bookdata &&

@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function TrackerButtons({page, totalPages}) {
 
-    const [currentPage, setCurrentChapter] = useState(page);
-    console.log("page is: ", page);
+    const [currentPage, setCurrentChapter] = useState();
     function reduceChapterCount() {
         if (currentPage > 1) {
             setCurrentChapter(currentPage - 1);
@@ -16,7 +15,11 @@ export default function TrackerButtons({page, totalPages}) {
         }
     }
 
+    useEffect(() => {
+        setCurrentChapter(page);
+    }, [page]);
 
+    console.log(page, totalPages)
     return (
         <>
             <div className="tracker-bar">
