@@ -5,6 +5,7 @@ import "./homepage.scss";
 import Recommendations from "../../components/Recommendations/recommendations";
 
 export default function HomePage() {
+    
     return (
         <>
             <Header />

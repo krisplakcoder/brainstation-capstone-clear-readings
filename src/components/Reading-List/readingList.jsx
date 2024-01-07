@@ -41,9 +41,6 @@ export default function ReadingList() {
                                         <progress id="progress-bar" className="reading-book__progress-bar" value={bookdata.currentPage} max={bookdata.pageCount} />
                                     </div>
                                 </div>
-                                {/* <div className="reading-book__description reading-book__description--tablet-desktop">
-                                    {bookdata.description}
-                                </div> */}
                             </li>
                         )})}
                 </ul>

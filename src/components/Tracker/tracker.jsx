@@ -1,42 +1,40 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import Modal from "../Modal/modal";
-import { useState } from "react"
-import bookdata from "../../assets/data/bookdata.json"
+import TrackerButtons from "./trackerButtons";
 import "./tracker.scss"
+
+const URL = "http://localhost:8080";
+
 
 export default function Tracker() {
 
-    const [currentChapter, setCurrentChapter] = useState(1);
     const [modalState, setModalState] = useState(false);
+    const [bookdata, setBookData] = useState();
 
-    function reduceChapterCount() {
-        if (currentChapter > 1) {
-            setCurrentChapter(currentChapter - 1);
-        }
-    }
+    const {param} = useParams();
+    console.log("param is: ", param);
 
-    function increaseChapterCount() {
-        if (currentChapter < bookdata.chapters) {
-            setCurrentChapter(currentChapter + 1);
-        }
-    }
+    useEffect(() => {
+        const getBookData = async () => {
+            try {
+                const response = await axios.get(URL + "/readinglist/" + param);
+                setBookData(response.data);
+                
+            } catch(error) {console.error(error)}
+        }; getBookData();
+    }, [param]);
 
 
     return (
-        <>
+        <>{bookdata &&
             <section className="tracker">
                 <div className="tracker-book">
                     <h1 className="tracker-book-title">{bookdata.title}</h1>
-                    <img src={bookdata.image} alt="current book cover" className="tracker-image tracker-image--mobile" onClick={() => setModalState(true)}/>
-                    <img src={bookdata.image} alt="current book cover" className="tracker-image tracker-image--tablet-desktop" />
-                    <div className="tracker-bar">
-                        <label htmlFor="tracker-bar" className="tracker-chapter">Chapter: {currentChapter}/{bookdata.chapters}</label>
-                        <progress id="tracker-bar" className="tracker-bar-progress" value = {currentChapter} max={bookdata.chapters} />
-                    </div>
-                    
-                    <div className="tracker-buttons">
-                        <button className="tracker-button tracker-buttons--minus" onClick={reduceChapterCount}>-</button>
-                        <button className="tracker-button tracker-buttons--add" onClick={increaseChapterCount}>+</button>
-                    </div>             
+                    <div className="tracker-image__container"><img src={bookdata.cover} alt="current book cover" className="tracker-image tracker-image--mobile" onClick={() => setModalState(true)}/></div>
+                    <div className="tracker-image__container"><img src={bookdata.cover} alt="current book cover" className="tracker-image tracker-image--tablet-desktop" /></div>        
+                    <TrackerButtons page={bookdata.currentPage} totalPages={bookdata.pageCount}/>
                 </div>
                 <div className="tracker-details tracker-details--tablet-desktop">
                     <h3 className="tracker-details-description-title">Description</h3>
@@ -49,8 +47,8 @@ export default function Tracker() {
                         <li className="tracker-details__list-item"><span className="tracker-details__list-item--title">ISBN:</span>  {bookdata.isbn}</li>
                     </ul>
                 </div>
-            </section>
-            { modalState ? <Modal props={bookdata} toggleModal={setModalState} /> : null }
+            </section> }
+            { modalState ? <Modal props={bookdata} toggleModal={setModalState} /> : null } 
         </>
     )
 }
