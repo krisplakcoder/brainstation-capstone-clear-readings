@@ -11,6 +11,7 @@ export default function ReadListButton({id, isbn}) {
             try {
                 const response = await axios.get(URL + "/readinglist");
                 IDchecker(response.data);
+                console.log(response.data);
             } catch(error) {console.error(error)}
         }; getReadList();
     }, []);

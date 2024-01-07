@@ -21,15 +21,14 @@ export default function FavButton({id}) {
     function IDchecker(array){
         if (array.find((obj) => obj.book_id === id) !== undefined) {
 
-             setFavoriteButton("Remove From Favorites");
-             setNewStyle("library__buttons-favorite--active");
+            setFavoriteButton("Remove From Favorites");
+            setNewStyle("library__buttons-favorite--active");
             
         } else {
             setFavoriteButton("Add to Favorites");
             setNewStyle();
         }
     }
-
 
     async function addFavorites(id) {
 
