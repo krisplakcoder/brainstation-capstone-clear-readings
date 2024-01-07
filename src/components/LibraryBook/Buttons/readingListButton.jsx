@@ -18,7 +18,7 @@ export default function ReadListButton({id, isbn}) {
 
     function IDchecker(array) {
         
-        if (array.find((obj) => obj.book_id === id) !== undefined) {
+        if (array.find((obj) => obj.id === id) !== undefined) {
 
             setReadButton("Remove from Reading List");
             setNewReadStyle("library__buttons-reading-list--active");

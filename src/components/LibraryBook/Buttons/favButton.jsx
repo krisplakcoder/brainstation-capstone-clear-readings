@@ -33,7 +33,7 @@ export default function FavButton({id}) {
     async function addFavorites(id) {
 
         if (favButtonName === "Add to Favorites") {
-            setNewStyle("library__buttons-favorite--height");
+            setNewStyle("library__buttons-favorite--active");
             setFavoriteButton("Remove From Favorites");
             try {
                 await axios.post(URL+"/favorites/", {id});
