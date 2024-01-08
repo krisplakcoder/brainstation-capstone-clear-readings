@@ -10,7 +10,7 @@ export default function Header() {
                     <Link to="/" className="navbar-title--link"><h1 className="navbar-title">Clear Readings</h1></Link>
                     <ul className="navbar-list">
                         <li className="navbar-list-item"><Link to="/library" className="navbar-title--link navbar-title--link-style">Library</Link></li>
-                        <li className="navbar-list-item">Favorites</li>
+                        <li className="navbar-list-item"><Link to="/favorites" className="navbar-title--link navbar-title--link-style">Favorites</Link></li>
                     </ul>
                 </section>
             </div>
