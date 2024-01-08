@@ -35,7 +35,7 @@ export default function Tracker() {
                     <h1 className="tracker-book-title">{bookdata.title}</h1>
                     <div className="tracker-image__container"><img src={bookdata.cover} alt="current book cover" className="tracker-image tracker-image--mobile" onClick={() => setModalState(true)}/></div>
                     <div className="tracker-image__container"><img src={bookdata.cover} alt="current book cover" className="tracker-image tracker-image--tablet-desktop" /></div>        
-                    <TrackerButtons page={bookdata.currentPage} totalPages={bookdata.pageCount}/>
+                    <TrackerButtons page={bookdata.currentPage} totalPages={bookdata.pageCount} id={pageID}/>
                 </div>
                 <div className="tracker-details tracker-details--tablet-desktop">
                     <h3 className="tracker-details-description-title">Description</h3>

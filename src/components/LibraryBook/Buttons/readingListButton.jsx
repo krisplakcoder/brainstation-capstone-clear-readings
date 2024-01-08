@@ -11,14 +11,14 @@ export default function ReadListButton({id, isbn}) {
             try {
                 const response = await axios.get(URL + "/readinglist");
                 IDchecker(response.data);
-                console.log(response.data);
+                console.log("readlist response: ", response.data);
             } catch(error) {console.error(error)}
         }; getReadList();
     }, []);
 
     function IDchecker(array) {
         
-        if (array.find((obj) => obj.id === id) == undefined) {
+        if (array.find((obj) => {return obj.book_id === id}) !== undefined) {
 
             setReadButton("Remove from Reading List");
             setNewReadStyle("library__buttons-reading-list--active");
