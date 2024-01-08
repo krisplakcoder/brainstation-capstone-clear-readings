@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 const URL = "http://localhost:8080";
 
 
 export default function TrackerButtons({page, totalPages, id}) {
 
-    const [newPage, setNewPage] = useState(page) 
+    const [newPage, setNewPage] = useState() 
     const [trackerState, setTrackerState] = useState();
+
+    const {changePageValue} = useParams();
 
     useEffect(() => {
         const updatePage = async () => {
@@ -17,6 +20,10 @@ export default function TrackerButtons({page, totalPages, id}) {
         }; updatePage();
  
     }, [newPage]);
+
+    useEffect(() => {
+        setNewPage(page);
+    }, [page])
 
     console.log("page: ", page);
     console.log("new page: ", newPage);
