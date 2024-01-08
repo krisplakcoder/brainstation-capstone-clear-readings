@@ -14,20 +14,17 @@ export default function Tracker() {
     const [bookdata, setBookData] = useState();
 
     const {pageID} = useParams();
-    console.log("param is: ", pageID);
 
     useEffect(() => {
         const getBookData = async () => {
             try {
                 const response = await axios.get(URL + "/readinglist/" + pageID);
                 setBookData(response.data);        
-                console.log("response: ",response.data);
             } catch(error) {console.error(error)}
         }; getBookData();
     }, [pageID]);
 
-    console.log("bookdata: ", bookdata);
-
+    {bookdata && console.log("currentPage: ", bookdata.currentPage)}
     return (
         <>{bookdata &&
             <section className="tracker">
