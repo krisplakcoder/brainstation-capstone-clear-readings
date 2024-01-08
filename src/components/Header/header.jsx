@@ -17,6 +17,3 @@ export default function Header() {
         </>
     )
 }
-
-// Notes
-// Replace title with image that returns to the homepage

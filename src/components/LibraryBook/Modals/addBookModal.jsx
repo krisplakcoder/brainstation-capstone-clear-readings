@@ -28,9 +28,6 @@ export default function AddBookModal({toggleModal}) {
             alert("please enter an ISBN key");
         } else { 
             axios.post((URL + "/library"), values)
-            .then(response => {
-                console.log("Response: ", response.data.message);
-            })
             .catch(error => {console.error("error: ", error.response.data.error)})
             .then(alert("Your book has been uploaded"));
             await window.location.reload();      

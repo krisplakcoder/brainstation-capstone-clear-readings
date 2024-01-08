@@ -10,13 +10,11 @@ export default function FavButton({id}) {
         const getFavorites = async () => {
             try {
                 const response = await axios.get(URL+"/favorites");
-                // setFavList(response.data);
                 IDchecker(response.data);
             } catch(error) {console.error(error)}
         }; getFavorites();     
     }, []);    
     
-    // IDchecker(favList);
 
     function IDchecker(array){
         if (array.find((obj) => obj.book_id === id) !== undefined) {

@@ -36,7 +36,6 @@ export default function LibraryModal({toggleModal, props}) {
                 </div>
                 <ul className="modal__details">
                     <li className="modal__details-list-item">{props.pageCount}</li>
-                    {/* <li className="modal__details-list-item">{props.genre}</li> */}
                 </ul>
                 <div className="library__buttons-container--mobile">
                     <ReadListButton id={props.id} isbn={props.isbn} />

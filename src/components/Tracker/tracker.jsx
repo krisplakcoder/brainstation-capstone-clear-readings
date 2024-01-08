@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "../Modal/modal";
 import TrackerButtons from "./trackerButtons";
+
 import "./tracker.scss"
 
 const URL = "http://localhost:8080";
@@ -24,7 +25,6 @@ export default function Tracker() {
         }; getBookData();
     }, [pageID]);
 
-    {bookdata && console.log("currentPage: ", bookdata.currentPage)}
     return (
         <>{bookdata &&
             <section className="tracker">

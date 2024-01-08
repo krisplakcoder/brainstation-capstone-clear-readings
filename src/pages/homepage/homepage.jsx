@@ -17,7 +17,6 @@ export default function HomePage() {
             </div>
             <Recommendations />
             <div className="tracking-books--mobile"><ReadingList /></div>
-            <h1>I am a HomePage</h1>
         </>
     )
 }

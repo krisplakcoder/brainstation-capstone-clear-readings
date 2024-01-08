@@ -9,13 +9,11 @@ export default function TrackerButtons({page, totalPages, id}) {
     const [newPage, setNewPage] = useState() 
     const [trackerState, setTrackerState] = useState();
 
-    const {changePageValue} = useParams();
-
     useEffect(() => {
         const updatePage = async () => {
             try {
                 
-                await axios.put(URL+"/readinglist/"+id, {currentPage: newPage});
+                await axios.put(URL+"/readinglist/"+id, {currentPage: newPage, pageID: id});
             } catch(error) {console.error(error)};
         }; updatePage();
  
@@ -25,8 +23,6 @@ export default function TrackerButtons({page, totalPages, id}) {
         setNewPage(page);
     }, [page])
 
-    console.log("page: ", page);
-    console.log("new page: ", newPage);
     
     function reduceChapterCount() {
         if (newPage > 1) {
@@ -43,7 +39,6 @@ export default function TrackerButtons({page, totalPages, id}) {
     
      useEffect(() => {
         const checkTracker = () => {
-            console.log(newPage, totalPages);
             if (newPage === totalPages || page === totalPages) {
                 setTrackerState(
                 <div className="tracker-bar--complete">

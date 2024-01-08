@@ -5,12 +5,11 @@ const URL = "http://localhost:8080";
 
 export default function RemoveBookModal({bookID, toggleModal}) {
 
-    console.log(bookID);
 
     async function deleteBook(event) {
         event.preventDefault();
         try {
-            await axios.delete(`${URL}/library/${bookID}`).then(response => console.log(response.data));
+            await axios.delete(`${URL}/library/${bookID}`);
             alert("The book has been deleted");
         } catch(error) {console.error(error)};
         await window.location.reload();      

@@ -24,15 +24,13 @@ export default function LibraryBook() {
                 const response = await axios.get(URL + "/library");
                 setBookList(response.data);
                 
-            } catch(error) {console.log(error);};
+            } catch(error) {console.error(error);};
         }
         getBooks();
     }, []);
 
 
-       
 
-    // onClick={() => addFavorites(bookdata.id)}
 
     return (
 
@@ -67,10 +65,8 @@ export default function LibraryBook() {
                                     <p className="library__book-description--overflow">{bookdata.description}</p>
                                 </div>
                                 <div className="library__buttons-container library__buttons--tablet-desktop library__book-section-tablet-desktop">
-                                    {/* <button className="library__buttons library__buttons-reading-list">Add to Reading List</button> */}
                                     <ReadListButton id={bookdata.id} isbn={bookdata.isbn} />
                                     <FavButton id={bookdata.id} />
-                                    {/* <button className="library__buttons library__buttons-favorite" onClick={() => addFavorites(bookdata.id)}>{favButtonName}</button> */}
                                     <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
                                 </div>
                             </div>
@@ -84,3 +80,4 @@ export default function LibraryBook() {
         </>
     )
 }
+

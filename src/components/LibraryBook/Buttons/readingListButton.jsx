@@ -11,7 +11,6 @@ export default function ReadListButton({id, isbn}) {
             try {
                 const response = await axios.get(URL + "/readinglist");
                 IDchecker(response.data);
-                console.log("readlist response: ", response.data);
             } catch(error) {console.error(error)}
         }; getReadList();
     }, []);
@@ -34,7 +33,7 @@ export default function ReadListButton({id, isbn}) {
             setNewReadStyle("library__buttons-reading-list--active");
             setReadButton("Remove from Reading List");
             try {
-                await axios.post(URL+"/readinglist", {id, isbn}).then(response => {console.log(response.data)});
+                await axios.post(URL+"/readinglist", {id, isbn});
             } catch(error) {console.error(error)};
         } else if (readButtonName === "Remove from Reading List") {
             setReadButton("Add to Reading List");
