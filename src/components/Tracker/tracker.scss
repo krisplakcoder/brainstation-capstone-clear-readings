@@ -1,0 +1,199 @@
+@import '../../styles/breakpoints';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.tracker {
+
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+        @include display-flex-column;
+    }
+
+    @include desktop {
+        @include display-flex-row;
+    }
+
+    &-details {
+
+        @include tablet {
+            @include display-flex-column;
+            justify-content: center;
+            width: fit-content;
+            max-width: 600px;
+        }
+
+        @include desktop {
+            @include display-flex-column;
+            justify-content: center;
+            width: fit-content;
+            max-width: 700px;
+        }
+
+        &__description {
+           @include tablet {
+                max-width: 300px;
+                max-height: 400px;
+                padding-top: 1rem;
+                overflow-y: scroll;
+            }
+
+            @include desktop {
+                max-width: 350px;
+                max-height: 150px;
+                padding: 0.5rem 0;
+                overflow-y: scroll;
+            }
+        }
+
+        &__list {
+
+            &-container {
+                @include tablet {
+                    padding-top: 1rem;
+                }
+                @include desktop {
+                    padding-top: 1rem;
+                    padding-left: 0rem;
+                }
+            }
+            &-item {
+                list-style-type: none;
+
+                &--title {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        &-description-title {
+            @include tablet {
+                padding-top: 1rem;
+            }
+        }
+
+    }
+
+    &-book {
+        @include display-flex-column;
+        align-items: center;
+        width: fit-content;
+
+        @include tablet {
+            height: 100%;
+        }
+
+        @include desktop {
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        &-title {
+            padding-bottom: 0.5rem;
+            max-width: 400px;
+            text-align: center;
+        }
+    }
+
+    &-bar {
+        width: 80%;
+        height: auto;
+        padding: 0.5rem 0;
+        text-align: center;
+        @include display-flex-column;
+
+        &--complete {
+            width: 200px;
+            height: 40px;
+            background-color: rgb(250, 178, 70);
+            border-radius: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &-message {
+                font-weight: 700;
+            }
+        }
+    }
+
+    &-buttons {
+        width: 80%;
+        @include display-flex-row;
+        justify-content: space-between;
+    }  
+    
+    &-button {
+        font-size: 0.8125rem;
+        width: 150px;
+        height: 40px;
+        border-radius: 4px;
+        border-style: none;
+        background-color: lightblue;
+        border: 2px solid lightyellow;
+
+        &:hover {
+            background-color: rgb(49, 190, 236);
+        }
+    }
+
+    &-image {
+        
+        aspect-ratio: 12/16;
+        width: 10rem;
+        max-width: 175px;
+        object-fit: fill;
+        vertical-align: bottom;
+
+        @include tablet {
+            max-width: 250px;
+        }
+
+        @include desktop {
+            max-width: 300px;
+        }
+
+        &:hover {
+            box-shadow: 4px  4px 2px rgba(101, 26, 20, 0.25);
+        }
+
+        &--mobile {
+            @include tablet {
+                display: none;
+            }
+            @include desktop {
+                display: none;
+            }
+        }
+
+        &--tablet-desktop {
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+}
+.tracker-details--tablet-desktop {
+    @include mobile {
+        display: none;
+    }
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: lightskyblue;
+    border-radius: 2px;
+}
+
+progress[value]::-webkit-progress-value {
+    background-color: darkblue;
+    border-radius: 2px;
+}

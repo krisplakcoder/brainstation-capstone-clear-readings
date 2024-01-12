@@ -1,0 +1,16 @@
+@import '../../styles/breakpoints';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.favorite {
+
+    &__card {
+
+        &--length {
+
+            @include desktop {
+                max-width: 1400px;
+            }
+        }
+    }
+}

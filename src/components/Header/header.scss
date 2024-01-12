@@ -1,0 +1,100 @@
+@import '../../styles/breakpoints';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.navbar {
+
+    @include display-flex-column;
+    justify-content: center;
+    height: 5rem;
+    width: 100%;
+
+    @include tablet {
+        @include display-flex-row;
+        justify-content: space-between;
+        align-items: end;
+        padding: 0 16px 16px 16px;
+        width: 100%;
+        max-width: 1000px;
+    }
+
+    @include desktop {
+        @include display-flex-row;
+        justify-content: space-between;
+        align-items: end;
+        padding: 0 48px 16px 48px;
+        width: 100%;
+        max-width: 1500px;
+    }
+
+    &__container {
+        background-color: $background-color;
+
+        @include tablet {
+            @include navbar-container-desktop-tablet;
+        }
+
+        @include desktop {
+            @include navbar-container-desktop-tablet;
+        }
+    }
+
+    &-title {
+
+        font-size: 1rem;
+        text-align: center;
+        padding-top: 1rem;
+
+        @include tablet {
+            font-size: 2rem;
+        }
+
+        @include desktop {
+            font-size: 2rem;
+            text-align: end;
+        }
+
+        &--link {
+            text-decoration: none;
+            color: $clear-black;
+
+            &-style {
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    &-list {
+        @include display-flex-row;
+        justify-content: space-evenly;
+        list-style-type: none;
+        align-items: end;
+        font-size: 0.8125rem;
+        padding: 0;
+        height: 100%;
+
+        @include tablet {
+            width: 30%;
+            font-size: 1rem;
+            text-align: right;
+        }
+
+        @include desktop {
+            width: 30%;
+            font-size: 1rem;
+            text-align: right;
+        }
+
+        &-item {
+            @include tablet {
+                width: 100%;
+            }
+
+            @include desktop {
+                width: 100%;
+            }
+        }
+    }
+}

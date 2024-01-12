@@ -1,0 +1,281 @@
+@import '../../styles/breakpoints';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.library {
+
+    &-section {
+        padding: 1rem;
+        background-color: rgb(250,245,244);
+        @include display-flex-column;        
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__card {
+
+        list-style-type: none;
+
+        @include display-flex-column;
+        // border: 1px solid blue;
+        border-radius: 4px;
+        padding: 1rem;
+        box-sizing: border-box;
+        box-shadow: 1px 1px rgba(121, 59, 53, 0.5), -1px -1px rgba(101, 26, 20, 0.25);
+        background-color: $background-color-tracker;
+        width: 100%;
+
+        @include tablet {
+            padding: 0.5rem; 
+            width: 100%;
+            max-width: 1000px; 
+            justify-content: center; 
+        }
+
+        @include desktop {
+            padding: 0.5rem;
+            width:100%;
+            max-width: 1500px;
+            justify-content: center; 
+        }
+
+        &-container {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+
+            @include tablet {
+                justify-content: start;
+                width: 100%;
+                height: auto;
+                max-width: 1000px;
+            }
+
+            @include desktop {
+                justify-content: start;
+                // padding: 0 3rem;
+                width: 100%;
+                height: auto;
+                max-width: 1500px;
+            }
+        }
+
+        &--favorite-mode-on {
+            border: 2px solid $clear-lightred;
+            box-shadow: none;
+        }
+
+    }
+
+    &__buttons {
+        
+        width: 155px;
+        height: 30px;
+        background-color: lightblue;
+        border: 2px solid lightyellow;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: rgb(49, 190, 236);
+            color: $clear-springwood;
+        }
+
+        &-container {
+            width: 25%;
+            @include display-flex-column;
+            align-items: end;
+            justify-content: space-between;
+
+            &--mobile {
+                @include display-flex-row;
+                justify-content: space-between;
+                width: 95%;
+                gap: 3rem;
+            }
+        }
+
+        &-favorite {
+            &--active {
+                height: 45px;
+                background-color: #DEF2FF;                
+            }
+        }
+
+        &-remove {
+            background-color: $clear-lightred;
+            color: $clear-springwood;
+
+            &:hover {
+                background-color: red;
+            }
+        }
+
+        &-reading-list {
+            &--active {
+                background-color: aquamarine;
+                height: 45px;
+
+                &:hover {
+                    background-color: #00CCCC;
+                }
+            }
+        }
+
+        &--tablet-desktop {
+            @include mobile {
+                display: none;
+            }
+        }
+
+
+        
+    }
+
+    &__book {
+
+        @include display-flex-row;
+        justify-content: start;
+        width: 100%;
+        height: 100px;
+        max-width: 600px;
+        gap: 1rem;
+
+        @include tablet {
+            width: 100%;
+            height: 175px;
+            max-width: 100%;
+        }
+       
+        @include desktop {
+            width: 100%;
+            height: 150px;
+            max-width: 100%;
+        }
+
+        &-cover {
+            max-height: 240px;
+            max-width: 140px;
+
+            @include tablet {
+                max-height: 400px;
+                width: 100%;
+            }
+
+            @include desktop {
+                max-height: 400px;
+                width: 100%;
+            }
+
+            &-image {
+                width: 100%;
+                height: 100%;
+                object-fit: fill;
+                vertical-align: bottom;
+
+                &--mobile {
+                    @include notMobile {
+                        display: none;
+                    }
+                }
+
+                &--tablet-desktop {
+                    @include mobile {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &-details {
+            @include display-flex-column;
+            justify-content: space-around;
+
+            &--bold {
+                font-weight: 700;
+            }
+
+            @include notMobile {
+                width: 25%;
+            }
+        }
+
+        &-section-tablet-desktop {
+            @include mobile {
+                display: none;
+            }
+        }
+
+        &-description {
+
+            max-width: 25%;
+            &--overflow {
+                overflow-y: scroll;
+                height: 100%;
+            }
+        }
+    }
+
+    &__fav-button {
+        display: flex;
+        justify-content: end;
+
+        @include tablet {
+            justify-content: center;
+            padding-top: 1rem;
+        }
+
+        @include desktop {
+            justify-content: center;
+            padding-top: 1rem;
+        }
+    }
+
+    
+    &__favorite {
+
+        &:hover {
+            &:hover {
+                border-right: 1px solid (89, 153, 139);
+                border-left: 1px solid (89, 153, 139);
+                box-shadow: 3px 3px rgba(89, 153, 139, 0.5);
+                transition: all 0.5s ease-in;
+            }
+        }
+        @include desktop {
+            width: 100vw;
+            max-width: 1200px;
+        }
+    }
+}
+
+.button__container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding-bottom: 1rem;
+
+    @include tablet {
+        max-width: 1000px;
+    }
+
+    @include desktop {
+        max-width: 1500px;
+        padding: 0 3rem 1rem 3rem;
+    }
+}
+
+.addBook {
+    
+    width: 100px;
+    height: 40px;
+    background-color: $clear-cherrywood;
+    color: $clear-springwood;
+    border: 1px solid $background-color-recommendations;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: $clear-roofTerracota;
+    }
+}

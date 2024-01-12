@@ -1,0 +1,122 @@
+@import '../../styles/breakpoints';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.reading-list {
+    
+    @include display-flex-column;
+    padding-inline-start: 0;
+
+
+    &-container {
+        @include display-flex-column;
+
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+
+        @include tablet {
+            max-width: 500px;
+            border-left: 1px solid $clear-roofTerracota;
+        }
+
+        @include desktop{
+            max-width: 700px;
+            border-left: 1px solid $clear-roofTerracota;
+            max-height: inherit;
+        }
+    }
+
+    &__title {
+        padding-bottom: 1rem;
+    }
+
+    &__link--style {
+        text-decoration: none;
+        color:black
+    }
+}
+
+.reading-book {
+
+    @include display-flex-row;
+    list-style-type: none;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
+    box-sizing: border-box;
+    border-bottom: 2px solid $clear-cherrywood;
+    border-top: 1px solid $clear-cherrywood;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+
+
+
+    &:hover {
+        border-right: 1px solid $clear-cherrywood;
+        border-left: 1px solid $clear-cherrywood;
+        box-shadow: 3px 3px rgba($clear-cherrywood, 0.5);
+        transition: all 0.5s ease-in;
+    }
+
+    &__image-div {
+        box-sizing: border-box;
+        width: 100%;
+        height: inherit;
+    }
+
+    &-image {
+        width: 100%;
+        max-height: 400px;
+        max-width: 300px;
+        height: inherit;
+        padding: 1rem;
+        object-fit: contain
+    }
+
+    &__details {
+        @include display-flex-column;
+        justify-content: space-between;
+        padding: 1rem 1rem;
+        width: 100%;
+        font-size: 0.8125rem;
+
+        @include tablet {
+            font-size: 1rem;
+            padding: 0 0 1rem 1rem;
+        }
+
+        @include desktop {
+            font-size: 1rem;
+            padding: 1.5rem 0 3rem 1rem;
+        }
+
+        &-title {
+            font-weight: 700;
+        }
+    }
+
+    &__description {
+        @include mobile{
+            display: none;
+        }
+
+        @include desktop {
+            padding-left: 1rem;
+            max-width: 25%;
+            height: 100%;            
+        }
+
+    }
+
+    &__progress {
+
+        &-label {
+            padding-bottom: 0.5rem;
+        }
+        &-container {
+            @include display-flex-column;
+        }
+    }
+}

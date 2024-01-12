@@ -1,0 +1,60 @@
+@import '../../styles/breakpoints';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.tracking-books {
+
+    background-color: $background-color-tracker;
+
+    @include tablet {
+        @include display-flex-row;
+        justify-content: space-between;
+        max-width: 1000px;
+    }
+
+    @include desktop {
+        @include display-flex-row;
+        justify-content: space-between;
+        max-width: 1600px;
+    }
+
+    &__container {
+
+        @include tablet {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background-color: $background-color-tracker;
+        }
+        @include desktop {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-height: 70vh;
+            background-color: $background-color-tracker;
+        }
+    }
+
+    &--mobile {
+
+        background-color: $background-color-tracker;
+        
+        @include tablet {
+            display: none;
+        }
+        @include desktop {
+            display: none;
+        }
+    }
+    &--tablet-desktop {
+
+        @include desktop {
+            overflow-y: scroll;
+            box-sizing: border-box;
+        }
+
+        @include mobile {
+            display: none;
+        }
+    }
+}

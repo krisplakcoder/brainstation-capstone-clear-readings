@@ -1,0 +1,18 @@
+@mixin display-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin display-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+// header/navbar mixins
+
+@mixin navbar-container-desktop-tablet {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
