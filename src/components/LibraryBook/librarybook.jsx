@@ -67,12 +67,12 @@ export default function LibraryBook() {
                                 <div className="library__buttons-container library__buttons--tablet-desktop library__book-section-tablet-desktop">
                                     <ReadListButton id={bookdata.id} isbn={bookdata.isbn} />
                                     <FavButton id={bookdata.id} />
-                                    <button className="library__buttons library__buttons-remove" onClick={() => setRemoveModalState(true)}>Remove From Library</button>
+                                    <button className="library__buttons library__buttons-remove" onClick={() => {setRemoveModalState(true); setBookModalData(bookdata)}}>Remove From Library</button>
                                 </div>
                             </div>
                         </div>
-                        {modalState && <LibraryModal key={bookdata.id} props={bookModalData} toggleModal={setModalState}/>}
-                        {removeBookState ? <RemoveBookModal bookID={bookdata.id} toggleModal={setRemoveModalState} /> : null}
+                        {modalState && <LibraryModal props={bookModalData} toggleModal={setModalState}/>}
+                        {removeBookState && <RemoveBookModal bookID={bookModalData.id} toggleModal={setRemoveModalState} /> }
                     </li>)}) }
                 </ul>
             </section>
