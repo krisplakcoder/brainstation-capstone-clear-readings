@@ -1,6 +1,6 @@
 Book Tracker
 
-My capston project will be a website that tracks reading habits by keeping records of what the user reads. It also stores records of the user's current physical and digital book collection as well as their favorite books, which the website will use to recommend books.
+My capstone project will be a website that tracks reading habits by keeping records of what the user reads. It also stores records of the user's current physical and digital book collection as well as their favorite books, which the website will use to recommend books.
 
 The website would assist users to develop a love for reading and map out their literary interests. 
 
